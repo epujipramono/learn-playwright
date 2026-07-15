@@ -6,15 +6,14 @@ test.use({
   storageState: 'playwright/.auth/user.json'
 });
 
-test('search admin', async ({ page }) => {
-  const username = 'josephevans2623'
+test('delete admin', async ({ page }) => {
+  const username = 'garciapaul'
   const adminPage = new AdminPage(page);
   await adminPage.goto();
   await adminPage.searchAdmin(username);
+  await adminPage.deleteAdmin();
 
-  //validasi
-  await this.page.waitForSelector('[class="oxd-table-card"]');
-  await expect(this.page.locator('[class="oxd-table-card"] [role="cell"]').nth(1)).toHaveText(username);
-  //await page.waitForTimeout(5000);
+  //validasi berhasil create user
+  await expect(page.getByText('Successfully Deleted')).toBeVisible({timeout: 10000});
 
 });

@@ -32,9 +32,33 @@ export class AdminPage {
 
         // confirm password
         await this.page.locator('[type="password"]').nth(1).fill(password);
-        await this.page.waitForTimeout(5000);
+
+        // click save
+        await this.page.getByRole('button', { name: 'Save' }).click();
+
+    }
+
+    async searchAdmin(username: string) {
+        await this.page.locator('[class="oxd-input oxd-input--active"]').last().fill(username);
+        await this.page.getByRole('button', { name: 'Search' }).click();
+
+    }
+
+    async updateAdmin() {
+        await this.page.locator('[class="oxd-icon bi-pencil-fill"]').click();
+
+        // status
+        await this.page.locator('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow').last().click();
+        await this.page.getByRole('option', { name: 'Disabled' }).click();
         
         // click save
         await this.page.getByRole('button', { name: 'Save' }).click();
+
+    }
+
+    async deleteAdmin() {
+        await this.page.locator('[class="oxd-icon bi-trash"]').click();
+        await this.page.getByRole('button', { name: ' Yes, Delete' }).click();
+
     }
 }
