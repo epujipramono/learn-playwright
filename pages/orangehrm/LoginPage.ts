@@ -7,14 +7,15 @@ export class LoginPage {
         await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
     }
 
-    async login(username: string, password: string) {
+    async fillUsername(username: string){
         await this.page.getByRole('textbox', { name: 'Username' }).fill(username);
+    }
+
+    async fillPassword(password: string) {
         await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
+    }
+
+    async clickLogin(){
         await this.page.getByRole('button', { name: 'Login' }).click();
-        
-        // using locator
-        // await this.page.locator('[name="username"]').fill(username);
-        // await this.page.locator('[name="password"]').fill(password);
-        // await this.page.locator('[type="submit"]').click();
     }
 }

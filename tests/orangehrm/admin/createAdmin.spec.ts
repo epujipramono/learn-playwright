@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
-import { AdminPage } from '../../../pages/AdminPage.ts';
+import { AdminPage } from '../../../pages/orangehrm/AdminPage.ts';
 
 test.use({
   storageState: 'playwright/.auth/user.json'
